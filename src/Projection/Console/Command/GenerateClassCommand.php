@@ -35,7 +35,6 @@ class GenerateClassCommand extends Command
             ->setName('generate:class')
             ->setDescription('Generates a new project class.')
             ->addOption('name', null, InputOption::VALUE_OPTIONAL, 'The class name')
-            ->addOption('no-tests', null, InputOption::VALUE_NONE, 'If set, no tests will be created (ignored if project does not support tests)')
         ;
     }
 
@@ -63,7 +62,6 @@ class GenerateClassCommand extends Command
         }
 
         $name = Validators::validateClassName($input->getOption('name'));
-        $generateTests = !$input->getOption('no-tests');
 
         if ($input->isInteractive()) {
             $dialog = $this->getHelperSet()->get('dialog');
@@ -90,7 +88,7 @@ class GenerateClassCommand extends Command
             $path => 'php/class.php.twig',
         );
 
-        if ($generateTests && $config['tests']) {
+        if ($config['tests']) {
             $testPath = $project->getTestsDirectory() . "/{$classPath}Test.php";
 
             $structure += array(
@@ -151,18 +149,5 @@ class GenerateClassCommand extends Command
             $input->getOption('name')
         );
         $input->setOption('name', $name);
-
-        $generateTests = false;
-        if ($config['tests']) {
-            $output->writeln('');
-
-            $generateTests = $dialog->askConfirmation(
-                $output,
-                $dialog->getQuestion('Do you want to generate unit tests', 'yes', '?'),
-                true
-            );
-        }
-
-        $input->setOption('no-tests', !$generateTests);
     }
 }
