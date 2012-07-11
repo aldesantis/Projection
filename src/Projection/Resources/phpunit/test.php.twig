@@ -1,0 +1,34 @@
+{% spaceless %}
+{% if class.namespace != '' %}
+    {% set namespace = '\\' ~ class.namespace %}
+{% else %}
+    {% set namespace = '' %}
+{% endif %}
+{% endspaceless %}
+<?php
+
+{% include "txt/heading.txt.twig" %}
+
+namespace {{ config.project.namespace }}\Tests{{ namespace }};
+
+use {{ config.project.namespace }}\Tests\TestCase;
+use {{ config.project.namespace }}{{ namespace }}\{{ class.name }};
+
+/**
+ * {{ class.name }} test
+ *
+ * @author {{ config.author.name }} <{{ config.author.email }}>
+ */
+class {{ name }}Test extends TestCase
+{
+    private ${{ class.varName }};
+
+    protected function get{{ class.name }}()
+    {
+        if ($this->{{ class.varName }} !== null) {
+            return $this->{{ class.varName }};
+        }
+
+        return $this->{{ class.varName }} = new {{ class.name }}();
+    }
+}

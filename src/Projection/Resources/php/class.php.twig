@@ -1,0 +1,14 @@
+<?php
+
+{% include "txt/heading.txt.twig" %}
+
+namespace {{ config.project.namespace }}{% if class.namespace != "" %}\{{ class.namespace }}{% endif %};
+
+/**
+ * {{ class.name }}
+ *
+ * @author {{ config.author.name }} <{{ config.author.email }}>
+ */
+class {{ class.name }}
+{
+}

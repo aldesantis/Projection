@@ -1,0 +1,7 @@
+<phpunit bootstrap="./{{ config.tests.dir }}/bootstrap.php">
+    <filter>
+        <whitelist addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./{{ config.src.dir }}/</directory>
+        </whitelist>
+    </filter>
+</phpunit>

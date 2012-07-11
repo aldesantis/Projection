@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * This file is part of the Projection package.
+ *
+ * (c) Alessandro Desantis <desa.alessandro@gmail.com>
+ *
+ * For the full copyright and LICENSE information, view the
+ * LICENSE file that was distributed with the source code.
+ */
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Projection\Console\Application;
+
+$app = new Application();
+$app->run();

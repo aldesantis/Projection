@@ -1,0 +1,11 @@
+{
+    "require": {
+        "symfony/yaml": "*",
+        "symfony/console": "*",
+        "twig/twig": "*"
+    },
+
+    "autoload": {
+        "psr-0": { "Projection": "src/" }
+    }
+}
